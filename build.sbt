@@ -1,6 +1,6 @@
-organization := "Patrick Nicolas"
+organization := "Sofiane AIT AKLI"
 
-name := "Scala for Machine Learning - 2nd Edition"
+name := "Scala_Tutorials"
 
 version := "0.99.2"
 
