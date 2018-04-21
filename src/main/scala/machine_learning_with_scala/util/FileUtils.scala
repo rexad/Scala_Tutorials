@@ -26,7 +26,7 @@ object FileUtils {
     } match {
       // Catch and display exception description and return false
       case Failure(e) =>
-        error(s"$className.write failed for $pathName", logger, e)
+        DisplayUtils.error(s"$className.write failed for $pathName", logger, e)
         if (printWriter.isDefined) printWriter.foreach(_.close)
         status
       case Success(s) => status
