@@ -8,27 +8,32 @@ import org.saddle.{Frame, Mat, Vec}
 
 object Demonstration extends App {
 
-  val dm1 = DenseMatrix((0, 1 ,2), (3, 4 ,5))
-  println(s"${dm1}")
-  println(s"${dm1.t}")
-
-  line(0 to 10)
-
   val resourcePath = getClass.getResourceAsStream("/boston_housing.data")
-  val lines = Source.fromInputStream(resourcePath).getLines.map(x => line2Data(x))
+  val lines = Source.fromInputStream(resourcePath).getLines
 
-  val data = lines.map(x => line2Data())
-
+  val data = lines.map(x => line2Data(x))
   val vecs = data.map(r => row2Vec(r))
-
   val matr = Mat(vecs.toArray)
-
   val fr = Frame(matr.transpose)
 
+  val output =fr.col(13)
 
-  def row2Vec(listDouble: List[Double]) :Vector[Double] = {
-    val v: Vector[]
-  }
+  println(s"${output.mean}")
+  println(s"${output.variance}")
+  println(s"${output.median}")
+  println(s"${output.max}")
+  println(s"${output.min}")
+
+  val f = Figure()
+  f.width = 800
+  f.height = 800
+
+  val columns = Vector("CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE", "DIS", "RAD", "TAX", "PTRATIO", "B", "LSTAT", "MEDV")
+  //val xs = for (x <- fr.colAt(0).toSeq) yield x._2
+  val ys = for (y <- fr.colAt(13).toSeq) yield y._2
+  println(ys)
+
+  def row2Vec(row: List[Double]) :Vec[Double] = Vec(row:_*)
 
   def line2Data(line: String): List[Double] = {
 
@@ -38,4 +43,5 @@ object Demonstration extends App {
       .map(_.toDouble)
       .toList
   }
+
 }
