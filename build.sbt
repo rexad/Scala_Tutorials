@@ -1,6 +1,6 @@
-organization := "Patrick Nicolas"
+organization := "Sofiane AIT AKLI"
 
-name := "Scala for Machine Learning - 2nd Edition"
+name := "Scala_Tutorials"
 
 version := "0.99.2"
 
@@ -13,11 +13,25 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % "2.1.0",
   "org.apache.spark" %% "spark-mllib" % "2.1.0",
   "org.apache.spark" %% "spark-streaming" % "2.1.0",
-  "org.scalatest" %% "scalatest" % "2.2.6"
+  "org.scalatest" %% "scalatest" % "2.2.6",
+
+  "org.scalanlp" %% "breeze" % "0.13.2",
+  "org.scalanlp" %% "breeze-natives" % "0.13.2",
+  "org.scalanlp" %% "breeze-viz" % "0.13.2",
+
+  "com.quantifind" %% "wisp" % "0.0.4",
+  "org.scala-saddle" %% "saddle-core" % "1.3.+"
+  // (OPTIONAL) "org.scala-saddle" %% "saddle-hdf5" % "1.3.+"
+
 )
 
-// Resolver for Apache Spark framework
-resolvers += "Akka Repository" at "http://repo.akka.io/releases/"
+
+
+resolvers ++= Seq(
+  "Sonatype Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots",
+  "Sonatype Releases" at "http://oss.sonatype.org/content/repositories/releases",
+  "Akka Repository" at "http://repo.akka.io/releases/"
+)
 
 // Options for the Scala compiler should be customize
 scalacOptions ++= Seq("-unchecked", "-optimize", "-language:postfixOps")
